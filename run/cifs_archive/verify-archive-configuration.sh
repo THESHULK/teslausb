@@ -38,8 +38,8 @@ function check_archive_mountable () {
 
   local mount_failed=false
   log_progress "Mount command-line: "
-  log_progress "mount -t cifs //$1/$2 $test_mount_location -o credentials=${tmp_credentials_file_path},iocharset=utf8,file_mode=0777,dir_mode=0777,sec=ntlm"
-  mount -t cifs "//$1/$2" "$test_mount_location" -o "credentials=${tmp_credentials_file_path},iocharset=utf8,file_mode=0777,dir_mode=0777,sec=ntlm" || mount_failed=true
+  log_progress "mount -t cifs //$1/$2 $test_mount_location -o vers=${cifs_version},credentials=${tmp_credentials_file_path},iocharset=utf8,file_mode=0777,dir_mode=0777,sec=ntlm"
+  mount -t cifs "//$1/$2" "$test_mount_location" -o "vers=${cifs_version},credentials=${tmp_credentials_file_path},iocharset=utf8,file_mode=0777,dir_mode=0777,sec=ntlm" || mount_failed=true
 
   if [ "$mount_failed" = true ]
   then
